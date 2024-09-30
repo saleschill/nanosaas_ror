@@ -1,0 +1,19 @@
+<!-- app/views/listings/show.html.erb -->
+<div class="container">
+  <h1><%= @listing.name %></h1>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Price: $<%= number_with_precision(@listing.price, precision: 2) %></h5>
+      <h6 class="card-subtitle mb-2 text-muted">Commission: <%= number_with_precision(@listing.commission, precision: 2) %>%</h6>
+      <p class="card-text"><%= @listing.description %></p>
+      <p class="card-text"><strong>Contact:</strong> <%= @listing.contact_info %></p>
+      <p class="card-text"><strong>Website:</strong> <%= link_to @listing.website_link, @listing.website_link, target: '_blank' %></p>
+    </div>
+  </div>
+
+  <% if user_signed_in? && current_user == @listing.user %>
+    <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-primary' %>
+  <% end %>
+  <%= link_to 'Back to Listings', listings_path, class: 'btn btn-secondary' %>
+</div>

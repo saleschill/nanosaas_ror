@@ -1,0 +1,8 @@
+<!-- app/views/listings/new.html.erb -->
+<div class="container">
+  <h1>New Listing</h1>
+
+  <%= render 'form', listing: @listing %>
+
+  <%= link_to 'Back to Listings', listings_path, class: 'btn btn-secondary mt-3' %>
+</div>
